@@ -8,9 +8,11 @@
     <string name="item3">▪ Policity information</string>
     <string name="create_account">Create an account</string>
     <string name="email">Email</string>
+    <string name="email_address">Email address</string>
+    <string name="error_less_character">You need more that 8 character</string>
     <string name="create_password">Create password</string>
     <string name="repeat_password">Repeat password</string>
-    <string name="policity">Your password should have a minimum of 8 character and contain at least one number, one uppercase and one lower case letter. You can use special charapters</string>
+    <string name="policies">Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter. You can use special characters</string>
     <string name="next">Next</string>
 
 </resources>
