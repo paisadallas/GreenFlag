@@ -3,4 +3,6 @@
     <dimen name="title">40sp</dimen>
     <dimen name="subtitle">25sp</dimen>
     <dimen name="description">20sp</dimen>
+    <dimen name="margin_description">15dp</dimen>
+    <dimen name="margin_item">20dp</dimen>
 </resources>
