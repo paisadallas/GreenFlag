@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class Email {
 
-
+    MathPassword mathPassword = new MathPassword();
     public boolean testEmail(String email){
 
         String regexEmail = "([a-z]|[A-Z]|[0-9]|[_-])+@\\S([a-z]|[A-Z]|[0-9])+.([a-z]|[A-Z])+([^.!@#$%^&**()_+{}:\"?><])";
@@ -51,4 +51,9 @@ public class Email {
                 }
             });
         }
+
+    public void checkMatch(EditText etPassword, EditText etMathPassword, ImageView imgCheckMath) {
+
+        mathPassword.mathPassword(etMathPassword,etPassword,imgCheckMath);
+    }
 }
