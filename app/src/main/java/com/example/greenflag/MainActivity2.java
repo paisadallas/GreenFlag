@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.greenflag.data.Load;
 import com.example.greenflag.data.Read;
@@ -26,6 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
     Button btnNext;
     EditText etEmail, etPassword,etMathPassword;
     ImageView imgCheckEmail,imgCheckPassword,imgCheckMath;
+    TextView tvWarningEmail, tvWarningPassword,tvWarningPasswordMath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,9 @@ public class MainActivity2 extends AppCompatActivity {
         imgCheckPassword = findViewById(R.id.img_check_password);
         imgCheckMath = findViewById(R.id.img_repeat_password);
 
-
+        tvWarningEmail = findViewById(R.id.tv_error_email);
+        tvWarningPassword = findViewById(R.id.tv_error_password);
+        tvWarningPasswordMath = findViewById(R.id.tv_error_repeat_password);
         //DATA
         Write write = new Write();
         Read read = new Read();
@@ -57,19 +61,24 @@ public class MainActivity2 extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   write.writeUser(sharedPreferences,"user","password");
+                write.writeUser(sharedPreferences,"andres@gmail.com","123456aA");
                 String email = etEmail.getText().toString();
                 load.email(sharedPreferences,email);
 
             }
         });
 
-        //imgCheckEmail.setImageResource(R.drawable.img_ok);
-        email.checkSpaces(etEmail,imgCheckEmail);
-        email.checkMatch(etPassword,etMathPassword,imgCheckMath);
-        password.checkPassword(etPassword,imgCheckPassword);
-        mathPassword.mathPassword(etPassword,etMathPassword,imgCheckMath);
+        //EMAIL CLASS
+        email.checkEmail(etEmail,imgCheckEmail,tvWarningEmail);
+        email.checkMatch(etPassword,etMathPassword,tvWarningPasswordMath,imgCheckMath);
+        email.checkEmailExist(etEmail,sharedPreferences,tvWarningEmail);
 
+        //PASSWORD CLASS
+        password.checkPassword(etPassword,tvWarningPassword,imgCheckPassword,email);
+        password.checkPasswordSave(etPassword,tvWarningPassword,imgCheckPassword,email);
+
+        //MATH CLASS
+        mathPassword.mathPassword(etPassword,etMathPassword,tvWarningPasswordMath, imgCheckMath);
     }
 
 }

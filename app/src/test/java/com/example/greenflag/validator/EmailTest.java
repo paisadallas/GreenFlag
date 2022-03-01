@@ -32,6 +32,7 @@ public class EmailTest {
         emails.add("username@yahoo..com");
         emails.add("username@yahoo.c");
         emails.add("username@ya hoo.corporate");
+        emails.add("andres@gmail");
 
 /*
         for(int i =0; i<emails.size();i++){
