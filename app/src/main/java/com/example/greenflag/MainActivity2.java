@@ -67,7 +67,7 @@ public class MainActivity2 extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-
+//prueba dos
         btnNext.setEnabled(false);
         //Buton back
         btnBack.setOnClickListener(new View.OnClickListener() {
