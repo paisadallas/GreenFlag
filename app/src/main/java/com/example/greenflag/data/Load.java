@@ -21,5 +21,9 @@ public class Load {
         return false;
     }
 
+    public String getPassword (SharedPreferences sharedPreferences, String email){
+        return sharedPreferences.getString(email,"");
+    }
+
 
 }

@@ -9,10 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.greenflag.R;
+import com.example.greenflag.data.Read;
 
 public class MathPassword {
 
-    public void mathPassword(EditText etPassword, EditText etMatch, TextView tvWarningMath, ImageView imageView){
+    public void mathPassword(EditText etPassword, EditText etMatch, TextView tvWarningMath, ImageView imageView, Read read){
 
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -46,13 +47,14 @@ public class MathPassword {
                             imageView.setImageResource(R.drawable.img_ok);
                             tvWarningMath.setText("Math");
                             tvWarningMath.setTextColor(Color.parseColor("#086E00"));
-
+                            read.enableMath(true);
                         }
                         else {
                             imageView.setImageResource(R.drawable.img_error);
                             tvWarningMath.setText("No math");
                             tvWarningMath.setTextColor(Color.parseColor("#FF0000"));
                             Log.d("PASSWORD","DIFERENT");
+                            read.enableMath(false);
                         }
                     }
                 });

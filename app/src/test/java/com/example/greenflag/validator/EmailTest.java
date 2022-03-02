@@ -32,7 +32,7 @@ public class EmailTest {
         emails.add("username@yahoo..com");
         emails.add("username@yahoo.c");
         emails.add("username@ya hoo.corporate");
-        emails.add("andres@gmail");
+        emails.add("andres@gmail"); //Invalid Email
 
 /*
         for(int i =0; i<emails.size();i++){
