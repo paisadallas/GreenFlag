@@ -2,6 +2,8 @@ package com.example.greenflag;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.greenflag.data.Load;
 import com.example.greenflag.data.Read;
@@ -24,7 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public static String SHARED_PREFS = "sharedPrefs";
     public static String TEXT= "text";
-    Button btnNext;
+    Button btnNext,btnBack;
     EditText etEmail, etPassword,etMathPassword;
     ImageView imgCheckEmail,imgCheckPassword,imgCheckMath;
     TextView tvWarningEmail, tvWarningPassword,tvWarningPasswordMath;
@@ -36,6 +39,8 @@ public class MainActivity2 extends AppCompatActivity {
 
         //LINK
         btnNext = findViewById(R.id.bt_next);
+        btnBack = findViewById(R.id.btn_back);
+
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         etMathPassword = findViewById(R.id.et_check_repeat_password);
@@ -49,7 +54,7 @@ public class MainActivity2 extends AppCompatActivity {
         tvWarningPasswordMath = findViewById(R.id.tv_error_repeat_password);
         //DATA
         Write write = new Write();
-        Read read = new Read();
+        Read read = new Read(btnNext);
         Load load = new Load();
 
         //VALIDATOR
@@ -57,28 +62,59 @@ public class MainActivity2 extends AppCompatActivity {
         Password password = new Password();
         MathPassword mathPassword = new MathPassword();
 
+        //Toast
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+
+        btnNext.setEnabled(false);
+        //Buton back
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Button Next
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                write.writeUser(sharedPreferences,"andres@gmail.com","123456aA");
-                String email = etEmail.getText().toString();
-                load.email(sharedPreferences,email);
+
+                if(read.write){
+
+                    Toast toast = Toast.makeText(context, "New user was created ", duration);
+                    toast.show();
+
+                    write.writeUser(sharedPreferences,etEmail.getText().toString(),etPassword.getText().toString());
+                    email.cleanData(etEmail,etPassword,etMathPassword);
+                }
+                else {
+
+                    Toast toast = Toast.makeText(context, "Welcome "+etEmail.getText()+"!", duration);
+                    toast.show();
+
+                }
+
+              //  load.email(sharedPreferences,email);
 
             }
         });
 
         //EMAIL CLASS
-        email.checkEmail(etEmail,imgCheckEmail,tvWarningEmail);
-        email.checkMatch(etPassword,etMathPassword,tvWarningPasswordMath,imgCheckMath);
-        email.checkEmailExist(etEmail,sharedPreferences,tvWarningEmail);
-
+        email.checkEmail(etEmail,imgCheckEmail,tvWarningEmail,read);
+        email.checkMatch(etPassword,etMathPassword,tvWarningPasswordMath,imgCheckMath,read);
+        email.checkEmailExist(etEmail,sharedPreferences,tvWarningEmail,read);
+        email.cleanPasswords(etEmail,etPassword,etMathPassword);
         //PASSWORD CLASS
-        password.checkPassword(etPassword,tvWarningPassword,imgCheckPassword,email);
-        password.checkPasswordSave(etPassword,tvWarningPassword,imgCheckPassword,email);
-
+        password.checkPassword(etPassword,tvWarningPassword,imgCheckPassword,email,read);
+        password.checkPasswordSave(etPassword,tvWarningPassword,imgCheckPassword,email,read);
         //MATH CLASS
-        mathPassword.mathPassword(etPassword,etMathPassword,tvWarningPasswordMath, imgCheckMath);
+        mathPassword.mathPassword(etPassword,etMathPassword,tvWarningPasswordMath, imgCheckMath,read);
+
+
     }
 
 }

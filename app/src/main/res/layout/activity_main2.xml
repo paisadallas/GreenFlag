@@ -34,137 +34,154 @@
         android:layout_below="@id/tv_title"
         app:srcCompat="@drawable/img_1"
         />
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_bar"
-        android:layout_marginTop="@dimen/margin_top_email"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:text="@string/email_address"/>
-    <LinearLayout
-        android:id="@+id/layout_email"
-        android:layout_below="@id/tv_email"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/margin_left"
+        >
 
+    <LinearLayout
+        android:id="@+id/principal_layout"
         android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/img_bar"
         android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/et_email"
+
+        <TextView
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
-            android:layout_weight="9"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_bar"
+            android:layout_marginTop="@dimen/margin_top_email"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:text="@string/email_address"/>
+        <LinearLayout
+            android:id="@+id/layout_email"
+            android:layout_below="@id/tv_email"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/margin_left"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="wrap_content"
+                android:layout_weight="9"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_check_email"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/img_error"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_error_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_email"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:text=""
+            android:textColor="@color/red" />
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_error_email"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:text="@string/create_password"/>
+
+        <LinearLayout
+            android:id="@+id/layout_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_below="@id/tv_password"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="wrap_content"
+                android:layout_weight="9"
+
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_check_password"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/img_error"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_error_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:layout_below="@id/layout_password"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:text="@string/error_less_character"/>
+        <TextView
+            android:id="@+id/tv_repeat_password"
+            android:layout_width="match_parent"
+            android:text="@string/repeat_password"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_below="@id/tv_error_password"
             android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/img_check_email"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+        <LinearLayout
+            android:id="@+id/layout_repeat_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_repeat_password"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/margin_left">
+
+            <EditText
+                android:id="@+id/et_check_repeat_password"
+                android:layout_width="wrap_content"
+                android:layout_weight="9"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_repeat_password"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/img_error"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_error_repeat_password"
+            android:layout_width="match_parent"
+            android:text="@string/repeat_password"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:textColor="@color/red"
+            android:layout_below="@id/layout_repeat_password"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_policies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/margin_top_policies"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_left"
+            android:layout_below="@id/tv_error_repeat_password"
+            android:text="@string/policies"/>
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/img_error"/>
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:text="@string/next"/>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_error_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_email"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:text=""
-        android:textColor="@color/red" />
-    <TextView
-        android:id="@+id/tv_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_error_email"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:text="@string/create_password"/>
+    </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/layout_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:layout_below="@id/tv_password"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_width="wrap_content"
-            android:layout_weight="9"
-
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/img_check_password"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/img_error"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_error_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:layout_below="@id/layout_password"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:text="@string/error_less_character"/>
-    <TextView
-        android:id="@+id/tv_repeat_password"
-        android:layout_width="match_parent"
-        android:text="@string/repeat_password"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:layout_below="@id/tv_error_password"
-        android:layout_height="wrap_content"/>
-    <LinearLayout
-        android:id="@+id/layout_repeat_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_repeat_password"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/margin_left">
-
-        <EditText
-            android:id="@+id/et_check_repeat_password"
-            android:layout_width="wrap_content"
-            android:layout_weight="9"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/img_repeat_password"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/img_error"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_error_repeat_password"
-        android:layout_width="match_parent"
-        android:text="@string/repeat_password"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:textColor="@color/red"
-        android:layout_below="@id/layout_repeat_password"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_policies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="@dimen/margin_top_policies"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:layout_marginRight="@dimen/margin_left"
-        android:layout_below="@id/tv_error_repeat_password"
-        android:text="@string/policies"/>
-    <Button
-        android:id="@+id/bt_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/black"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:textColor="@color/white"
-        android:text="@string/next"/>
 </RelativeLayout>

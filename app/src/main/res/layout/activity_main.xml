@@ -7,80 +7,94 @@
     android:id="@+id/relative_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/img_logo"
-        android:layout_alignParentTop="true"
-        android:rotation="20"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        app:srcCompat="@drawable/logo" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/img_title"
-       android:layout_marginLeft="20dp"
-        android:layout_below="@id/img_logo"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/img" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/subtitle"
-        android:textColor="@color/black"
-        android:layout_below="@id/img_title"
-        android:textSize="@dimen/subtitle"
-        android:layout_marginLeft="30dp"/>
-    <TextView
-        android:id="@+id/tv_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_description"
-        android:text="@string/description"
-        android:textColor="@color/black"
-        android:layout_below="@id/subtitle"
-        android:textSize="@dimen/description"
-        android:layout_marginLeft="30dp"/>
-    <TextView
-        android:id="@+id/tv_item1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_item"
-        android:text="@string/item1"
-        android:textColor="@color/black"
-        android:layout_below="@id/tv_description"
-        android:textSize="@dimen/description"
-        android:layout_marginLeft="30dp"/>
-    <TextView
-        android:id="@+id/tv_item2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/item2"
-        android:textColor="@color/black"
-        android:layout_below="@id/tv_item1"
-        android:textSize="@dimen/description"
-        android:layout_marginLeft="30dp"/>
-    <TextView
-        android:id="@+id/tv_item3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/item3"
-        android:textColor="@color/black"
-        android:layout_below="@id/tv_item2"
-        android:textSize="@dimen/description"
-        android:layout_marginLeft="30dp"/>
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_alignParentTop="true"
+            android:rotation="20"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:srcCompat="@drawable/logo" />
 
-    <Button
-        android:id="@+id/btn_create_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/create_account"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/black"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/margin_bottom"/>
+        <ImageView
+            android:id="@+id/img_title"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/img_logo"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/img" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle"
+            android:textColor="@color/black"
+            android:layout_below="@id/img_title"
+            android:textSize="@dimen/subtitle"
+            android:layout_marginLeft="30dp"/>
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_description"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:layout_below="@id/subtitle"
+            android:textSize="@dimen/description"
+            android:layout_marginLeft="30dp"/>
+        <TextView
+            android:id="@+id/tv_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_item"
+            android:text="@string/item1"
+            android:textColor="@color/black"
+            android:layout_below="@id/tv_description"
+            android:textSize="@dimen/description"
+            android:layout_marginLeft="30dp"/>
+        <TextView
+            android:id="@+id/tv_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item2"
+            android:textColor="@color/black"
+            android:layout_below="@id/tv_item1"
+            android:textSize="@dimen/description"
+            android:layout_marginLeft="30dp"/>
+        <TextView
+            android:id="@+id/tv_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item3"
+            android:textColor="@color/black"
+            android:layout_below="@id/tv_item2"
+            android:textSize="@dimen/description"
+            android:layout_marginLeft="30dp"/>
+
+        <Button
+            android:id="@+id/btn_create_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_bottom"
+            android:text="@string/create_account"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/black"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_bottom"/>
+
+    </LinearLayout>
+
+    </ScrollView>
 
 
 

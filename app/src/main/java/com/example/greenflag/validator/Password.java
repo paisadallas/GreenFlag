@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.greenflag.R;
 import com.example.greenflag.data.Load;
+import com.example.greenflag.data.Read;
 import com.example.greenflag.data.Write;
 
 import java.util.regex.Pattern;
@@ -18,8 +19,10 @@ public class Password {
 
     String normalCasePassword = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
     String specialCharacterPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-    boolean math=false;
+
+    public boolean math=false;
     public String password = "";
+
     public boolean testCheckPassword(String password){
 
         String normalCasePassword = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
@@ -31,7 +34,7 @@ public class Password {
         return (normalCase || specialCharacter);
     }
 
-    public void checkPassword(EditText etPassword, TextView tvWarningPassword, ImageView imgCheckPassword,Email email) {
+    public void checkPassword(EditText etPassword, TextView tvWarningPassword, ImageView imgCheckPassword, Email email, Read rear) {
 
 
         etPassword.addTextChangedListener(new TextWatcher() {
@@ -44,7 +47,7 @@ public class Password {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
+//kk
             @Override
             public void afterTextChanged(Editable editable) {
 
@@ -60,7 +63,7 @@ public class Password {
                         tvWarningPassword.setText("Correct");
                         tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
                         setMath(true,editable.toString());
-
+                        rear.enablePassword(true);
                     }else {
 
                     }
@@ -70,14 +73,14 @@ public class Password {
                     imgCheckPassword.setImageResource(R.drawable.img_error);
                     tvWarningPassword.setText("Incorrect Password");
                     tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
-                    setMath(false,"");
-
+                    setMath(false,editable.toString()); //no exist
+                    rear.enablePassword(false);
                 }
             }
         });
     }
 
-    public void checkPasswordSave(EditText etPassword, TextView tvWarningPassword,ImageView imgCheckPassword, Email email) {
+    public void checkPasswordSave(EditText etPassword, TextView tvWarningPassword,ImageView imgCheckPassword, Email email, Read read) {
 
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -105,12 +108,13 @@ public class Password {
                        imgCheckPassword.setImageResource(R.drawable.img_ok);
                        tvWarningPassword.setText("Correct");
                        tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
-
+                       read.enablePassword(true);
                    }
                     if(email.exist && !(email.match(editable.toString()))){
                         imgCheckPassword.setImageResource(R.drawable.img_error);
                         tvWarningPassword.setText("Incorrect Password");
                         tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
+                        read.enablePassword(false);
                     }
                 }else {
 //                    imgCheckPassword.setImageResource(R.drawable.img_error);
