@@ -62,7 +62,6 @@ public class MainActivity2 extends AppCompatActivity {
         //DATA
         Write write = new Write();
         Read read = new Read(btnNext);
-        Load load = new Load();
 
         //VALIDATOR
         Email email = new Email();
@@ -99,12 +98,9 @@ public class MainActivity2 extends AppCompatActivity {
                     email.cleanData(etEmail,etPassword,etMathPassword);
                 }
                 else {
-
                     Toast toast = Toast.makeText(context, "Welcome "+etEmail.getText()+"!", duration);
                     toast.show();
-
                 }
-
             }
         });
 
@@ -118,6 +114,7 @@ public class MainActivity2 extends AppCompatActivity {
         password.checkPasswordSave(etPassword,tvWarningPassword,imgCheckPassword,email,read);
         //MATH CLASS
         mathPassword.mathPassword(etPassword,etMathPassword,tvWarningPasswordMath, imgCheckMath,read);
+        Log.d("ROTATION","DO IT");
 
     }
 }
