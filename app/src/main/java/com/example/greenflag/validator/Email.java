@@ -30,11 +30,11 @@ public class Email {
     public boolean exist = false;
 
 
-    String regex = "([a-z]|[A-Z]|[0-9]|[_-])+@\\S([a-z]|[A-Z]|[0-9])+.([a-z]|[A-Z])+([^.!@#$%^&**()_+{}:\"?><])";
+    String regex = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,6})+$";
 
     public boolean testEmail(String email){
 
-        String regexEmail = "([a-z]|[A-Z]|[0-9]|[_-])+@\\S([a-z]|[A-Z]|[0-9])+.([a-z]|[A-Z])+([^.!@#$%^&**()_+{}:\"?><])";
+        String regexEmail = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,6})+$";
        return Pattern.compile(regexEmail).matcher(email).matches();
     }
 

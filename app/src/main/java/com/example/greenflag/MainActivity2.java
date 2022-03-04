@@ -26,7 +26,6 @@ import com.example.greenflag.validator.Password;
 public class MainActivity2 extends AppCompatActivity {
 
     public static String SHARED_PREFS = "sharedPrefs";
-    public static String TEXT= "text";
     Button btnNext,btnBack;
     EditText etEmail, etPassword,etMathPassword;
     ImageView imgCheckEmail,imgCheckPassword,imgCheckMath;
@@ -67,7 +66,7 @@ public class MainActivity2 extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-//prueba dos
+
         btnNext.setEnabled(false);
         //Buton back
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +96,6 @@ public class MainActivity2 extends AppCompatActivity {
                     toast.show();
 
                 }
-
-              //  load.email(sharedPreferences,email);
 
             }
         });
