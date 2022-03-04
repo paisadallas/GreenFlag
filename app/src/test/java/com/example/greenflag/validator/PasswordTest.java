@@ -20,10 +20,10 @@ public class PasswordTest {
         pass.add("AAAa121.");
         //CHECK
         pass.add("AAA2a22*");
-        pass.add("asdf1234"); //missing upperlower
-        pass.add("asdf233d");
+        pass.add("asdf1234A"); //missing upperlower
+        pass.add("asdf233#.d%A");
 
         Password password = new Password();
-        assertEquals(true,password.testCheckPassword((String) pass.get(5)));
+        assertEquals(true,password.testCheckPassword((String) pass.get(6)));
     }
 }

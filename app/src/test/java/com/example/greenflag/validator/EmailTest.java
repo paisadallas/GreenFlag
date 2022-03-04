@@ -32,14 +32,14 @@ public class EmailTest {
         emails.add("username@yahoo..com");
         emails.add("username@yahoo.c");
         emails.add("username@ya hoo.corporate");
-        emails.add("andres@gmail"); //Invalid Email
+        emails.add("andres@gmai"); //Invalid Email
 
-/*
-        for(int i =0; i<emails.size();i++){
-            assertEquals(false,email.testEmail((String) emails.get(i)));
-        }
-*/
-        assertEquals(false,email.testEmail((String) emails.get(9)));
+
+//        for(int i =0; i<emails.size();i++){
+//            assertEquals(false,email.testEmail((String) emails.get(i)));
+//        }
+
+     //   assertEquals(false,email.testEmail((String) emails.get(10)));
 
     }
 
@@ -49,21 +49,24 @@ public class EmailTest {
 
         List emails = new ArrayList();
         //INVALID EMAILS
-        emails.add("user2@domain.com");
-        emails.add("username@yahoo.com.");
-        emails.add("..username@gmail.com");
-        emails.add("!username@gmail.com");
+        emails.add("user@domain.com");
+        emails.add("us5ername@yahoo.com");
+        emails.add("username@gmail.com");
+        emails.add("username@gmail.com.co");
+        emails.add("2usern-ame@gmail.com");
+        emails.add("2us_ername@gmail.com");
         emails.add("2username@gmail.com");
-        emails.add("2user name@gmail.com");
-        emails.add("2user*name@gmail.com");
-        emails.add("2user*name@gmail.@com");
-        emails.add("username@yahoo..com");
-        emails.add("username@yahoo.c");
-        emails.add("username@yahoo.corporate");
 
-      //  assertEquals(true,email.testEmail((String) emails.get(0)));
-       // assertEquals(true,"user@domain.com");
-        assertTrue(email.testEmail((String) emails.get(0)));
+        emails.add("username@yahoo.com");
+        emails.add("username@yahoo.cui");
+        emails.add("username@yahoo.corpo");
+
+
+
+                for(int i =0; i<emails.size();i++){
+            assertEquals(true,email.testEmail((String) emails.get(i)));
+        }
+   //   assertEquals(true,email.testEmail((String) emails.get(7)));
     }
 
 }

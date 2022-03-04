@@ -17,16 +17,16 @@ import java.util.regex.Pattern;
 
 public class Password {
 
-    String normalCasePassword = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
-    String specialCharacterPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+    String normalCasePassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
+    String specialCharacterPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\w\\W]{8,}$";
 
     public boolean math=false;
     public String password = "";
 
     public boolean testCheckPassword(String password){
 
-        String normalCasePassword = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
-        String specialCharacterPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        String normalCasePassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
+        String specialCharacterPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\w\\W]{8,}$";
 
         boolean normalCase=Pattern.compile(normalCasePassword).matcher(password).matches();
         boolean specialCharacter = Pattern.compile(specialCharacterPassword).matcher(password).matches();
