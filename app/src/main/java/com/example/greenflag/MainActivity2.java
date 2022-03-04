@@ -31,6 +31,15 @@ public class MainActivity2 extends AppCompatActivity {
     ImageView imgCheckEmail,imgCheckPassword,imgCheckMath;
     TextView tvWarningEmail, tvWarningPassword,tvWarningPasswordMath;
 
+    //DATA
+    Write write = new Write();
+
+
+    //VALIDATOR
+    Email email = new Email();
+    Password password = new Password();
+    MathPassword mathPassword = new MathPassword();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,22 +61,13 @@ public class MainActivity2 extends AppCompatActivity {
         tvWarningPassword = findViewById(R.id.tv_error_password);
         tvWarningPasswordMath = findViewById(R.id.tv_error_repeat_password);
 
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        //DATA
-        Write write = new Write();
         Read read = new Read(btnNext);
-
-        //VALIDATOR
-        Email email = new Email();
-        Password password = new Password();
-        MathPassword mathPassword = new MathPassword();
-
         //Toast
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
@@ -114,7 +114,9 @@ public class MainActivity2 extends AppCompatActivity {
         password.checkPasswordSave(etPassword,tvWarningPassword,imgCheckPassword,email,read);
         //MATH CLASS
         mathPassword.mathPassword(etPassword,etMathPassword,tvWarningPasswordMath, imgCheckMath,read);
+
         Log.d("ROTATION","DO IT");
+        Log.d("ROTATION",etPassword.toString());
 
     }
 }

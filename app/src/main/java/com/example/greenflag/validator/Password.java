@@ -36,7 +36,28 @@ public class Password {
 
     public void checkPassword(EditText etPassword, TextView tvWarningPassword, ImageView imgCheckPassword, Email email, Read rear) {
 
+        //UPDATE ROTATION
+        String passwordUpdate = etPassword.getText().toString();
 
+        boolean normalCase=Pattern.compile(normalCasePassword).matcher(passwordUpdate).matches();
+        boolean specialCharacter = Pattern.compile(specialCharacterPassword).matcher(passwordUpdate).matches();
+
+        if((normalCase || specialCharacter)) {
+            if (!email.exist) {
+                imgCheckPassword.setImageResource(R.drawable.img_ok);
+                tvWarningPassword.setText("Correct");
+                tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
+                setMath(true, etPassword.toString());
+                rear.enablePassword(true);
+            }
+        }else {
+            imgCheckPassword.setImageResource(R.drawable.img_error);
+            tvWarningPassword.setText("Incorrect Password");
+            tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
+            setMath(false,etPassword.toString()); //no exist
+            rear.enablePassword(false);
+        }
+        //UPDATE LISTENER
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -82,6 +103,35 @@ public class Password {
 
     public void checkPasswordSave(EditText etPassword, TextView tvWarningPassword,ImageView imgCheckPassword, Email email, Read read) {
 
+        //UPDATE
+        Log.d("UPDATING","WORING");
+
+        String etPasswordUpdate = etPassword.toString();
+
+        boolean normalCase=Pattern.compile(normalCasePassword).matcher(etPasswordUpdate).matches();
+        boolean specialCharacter = Pattern.compile(specialCharacterPassword).matcher(etPasswordUpdate).matches();
+
+        if(normalCase || specialCharacter){
+            //
+            Log.d("UPDATING","WORKING2");
+            Log.d("UPDATING","EMAIL"+email.toString());
+            if(email.match(etPasswordUpdate) && email.exist) {
+                //Password does math
+                Log.d("UPDATING","WORKING3");
+                imgCheckPassword.setImageResource(R.drawable.img_ok);
+                tvWarningPassword.setText("Correct");
+                tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
+                read.enablePassword(true);
+            }
+            if(email.exist && !(email.match(etPasswordUpdate))){
+                imgCheckPassword.setImageResource(R.drawable.img_error);
+                tvWarningPassword.setText("Incorrect Password");
+                tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
+                read.enablePassword(false);
+            }
+        }
+
+        //UPDATE LISTENER
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

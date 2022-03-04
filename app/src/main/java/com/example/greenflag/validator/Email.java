@@ -153,4 +153,8 @@ public class Email {
         etPassword.setText("");
         etMathPassword.setText("");
     }
+
+    public void update (){
+
+    }
 }
