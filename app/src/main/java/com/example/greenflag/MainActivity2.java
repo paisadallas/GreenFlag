@@ -106,8 +106,8 @@ public class MainActivity2 extends AppCompatActivity {
 
         //EMAIL CLASS
         email.checkEmail(etEmail,imgCheckEmail,tvWarningEmail,read);
-        email.checkMatch(etPassword,etMathPassword,tvWarningPasswordMath,imgCheckMath,read);
-        email.checkEmailExist(etEmail,sharedPreferences,tvWarningEmail,read);
+        email.checkMatch(etPassword,etMathPassword,tvWarningPasswordMath,imgCheckMath,read,password);
+        email.checkEmailExist(etEmail,sharedPreferences,tvWarningEmail,read,password);
         email.cleanPasswords(etEmail,etPassword,etMathPassword);
         //PASSWORD CLASS
         password.checkPassword(etPassword,etMathPassword,mathPassword,tvWarningPassword,tvWarningPasswordMath,imgCheckPassword,imgCheckMath,email,read);

@@ -65,6 +65,7 @@ public class MathPassword {
                             tvWarningMath.setText("Math");
                             tvWarningMath.setTextColor(Color.parseColor("#086E00"));
                             read.enableMath(true);
+                            Log.d("PASSWORD","MATH");
                         }
                         else {
                             imageView.setImageResource(R.drawable.img_error);
@@ -77,5 +78,41 @@ public class MathPassword {
                 });
             }
         });
+
+        etMatch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable1) {
+
+                Log.d("PASSWORD_MATH","MATH_ENTER");
+
+                if (editable1.toString().equals(etPassword.getText().toString())) {
+                    imageView.setImageResource(R.drawable.img_ok);
+                    tvWarningMath.setText("Math");
+                    tvWarningMath.setTextColor(Color.parseColor("#086E00"));
+                    read.enableMath(true);
+                    Log.d("PASSWORD_MATH","MATH");
+                }
+                else {
+                    imageView.setImageResource(R.drawable.img_error);
+                    tvWarningMath.setText("No math");
+                    tvWarningMath.setTextColor(Color.parseColor("#FF0000"));
+                    Log.d("PASSWORD","DIFERENT");
+                    read.enableMath(false);
+                    Log.d("PASSWORD_MATH","NO_MATH");
+                }
+            }
+        });
+
+
     }
 }

@@ -176,10 +176,6 @@ public class Password {
                         read.enablePassword(false);
                         mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
                     }
-                }else {
-//                    imgCheckPassword.setImageResource(R.drawable.img_error);
-//                    tvWarningPassword.setText("Invalid format");
-//                    tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
                 }
             }
         });

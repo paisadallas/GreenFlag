@@ -90,12 +90,12 @@ public class Email {
             });
         }
 
-    public void checkMatch(EditText etPassword, EditText etMathPassword,TextView tvWarningMath,ImageView imgCheckMath, Read read) {
+    public void checkMatch(EditText etPassword, EditText etMathPassword,TextView tvWarningMath,ImageView imgCheckMath, Read read,Password password) {
 
         mathPassword.mathPassword(etMathPassword,etPassword,tvWarningMath,imgCheckMath,read);
     }
 
-    public void checkEmailExist(EditText etEmail, SharedPreferences sharedPreferences, TextView tvWarningEmail,Read read) {
+    public void checkEmailExist(EditText etEmail, SharedPreferences sharedPreferences, TextView tvWarningEmail,Read read,Password password) {
 
         //UPDATE ROTATE
         String email = etEmail.getText().toString();
