@@ -29,7 +29,7 @@ public class Email {
     public boolean check=false;
     public boolean exist = false;
 
-
+    //end
     String regex = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,6})+$";
 
     public boolean testEmail(String email){

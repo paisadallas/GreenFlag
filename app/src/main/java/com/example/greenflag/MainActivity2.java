@@ -51,6 +51,14 @@ public class MainActivity2 extends AppCompatActivity {
         tvWarningEmail = findViewById(R.id.tv_error_email);
         tvWarningPassword = findViewById(R.id.tv_error_password);
         tvWarningPasswordMath = findViewById(R.id.tv_error_repeat_password);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         //DATA
         Write write = new Write();
         Read read = new Read(btnNext);
@@ -111,7 +119,5 @@ public class MainActivity2 extends AppCompatActivity {
         //MATH CLASS
         mathPassword.mathPassword(etPassword,etMathPassword,tvWarningPasswordMath, imgCheckMath,read);
 
-
     }
-
 }
