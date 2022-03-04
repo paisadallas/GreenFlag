@@ -22,7 +22,7 @@ public class Password {
 
     public boolean math=false;
     public String password = "";
-
+/*
     public boolean testCheckPassword(String password){
 
         String normalCasePassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
@@ -33,7 +33,7 @@ public class Password {
 
         return (normalCase || specialCharacter);
     }
-
+*/
     public void checkPassword(EditText etPassword,EditText etMath,MathPassword mathPassword, TextView tvWarningPassword, TextView tvWarningPasswordMath,ImageView imgCheckPassword,ImageView imgMath, Email email, Read read) {
 
         //UPDATE ROTATION
