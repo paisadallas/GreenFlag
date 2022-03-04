@@ -34,13 +34,14 @@ public class Password {
         return (normalCase || specialCharacter);
     }
 
-    public void checkPassword(EditText etPassword, TextView tvWarningPassword, ImageView imgCheckPassword, Email email, Read rear) {
+    public void checkPassword(EditText etPassword,EditText etMath,MathPassword mathPassword, TextView tvWarningPassword, TextView tvWarningPasswordMath,ImageView imgCheckPassword,ImageView imgMath, Email email, Read read) {
 
         //UPDATE ROTATION
         String passwordUpdate = etPassword.getText().toString();
 
         boolean normalCase=Pattern.compile(normalCasePassword).matcher(passwordUpdate).matches();
         boolean specialCharacter = Pattern.compile(specialCharacterPassword).matcher(passwordUpdate).matches();
+        mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
 
         if((normalCase || specialCharacter)) {
             if (!email.exist) {
@@ -48,14 +49,16 @@ public class Password {
                 tvWarningPassword.setText("Correct");
                 tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
                 setMath(true, etPassword.toString());
-                rear.enablePassword(true);
+                read.enablePassword(true);
+                mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
             }
         }else {
             imgCheckPassword.setImageResource(R.drawable.img_error);
             tvWarningPassword.setText("Incorrect Password");
             tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
             setMath(false,etPassword.toString()); //no exist
-            rear.enablePassword(false);
+            read.enablePassword(false);
+            mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
         }
         //UPDATE LISTENER
         etPassword.addTextChangedListener(new TextWatcher() {
@@ -84,7 +87,8 @@ public class Password {
                         tvWarningPassword.setText("Correct");
                         tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
                         setMath(true,editable.toString());
-                        rear.enablePassword(true);
+                        read.enablePassword(true);
+                        mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
                     }else {
 
                     }
@@ -95,13 +99,14 @@ public class Password {
                     tvWarningPassword.setText("Incorrect Password");
                     tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
                     setMath(false,editable.toString()); //no exist
-                    rear.enablePassword(false);
+                    read.enablePassword(false);
+                    mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
                 }
             }
         });
     }
 
-    public void checkPasswordSave(EditText etPassword, TextView tvWarningPassword,ImageView imgCheckPassword, Email email, Read read) {
+    public void checkPasswordSave(EditText etPassword,EditText etMath, TextView tvWarningPassword,TextView tvWarningPasswordMath,ImageView imgCheckPassword,ImageView imgMath, Email email, Read read,MathPassword mathPassword) {
 
         //UPDATE
         Log.d("UPDATING","WORING");
@@ -110,6 +115,7 @@ public class Password {
 
         boolean normalCase=Pattern.compile(normalCasePassword).matcher(etPasswordUpdate).matches();
         boolean specialCharacter = Pattern.compile(specialCharacterPassword).matcher(etPasswordUpdate).matches();
+        mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
 
         if(normalCase || specialCharacter){
             //
@@ -122,12 +128,14 @@ public class Password {
                 tvWarningPassword.setText("Correct");
                 tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
                 read.enablePassword(true);
+                mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
             }
             if(email.exist && !(email.match(etPasswordUpdate))){
                 imgCheckPassword.setImageResource(R.drawable.img_error);
                 tvWarningPassword.setText("Incorrect Password");
                 tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
                 read.enablePassword(false);
+                mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
             }
         }
 
@@ -159,12 +167,14 @@ public class Password {
                        tvWarningPassword.setText("Correct");
                        tvWarningPassword.setTextColor(Color.parseColor("#086E00"));
                        read.enablePassword(true);
+                       mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
                    }
                     if(email.exist && !(email.match(editable.toString()))){
                         imgCheckPassword.setImageResource(R.drawable.img_error);
                         tvWarningPassword.setText("Incorrect Password");
                         tvWarningPassword.setTextColor(Color.parseColor("#FF0000"));
                         read.enablePassword(false);
+                        mathPassword.mathPassword(etPassword,etMath,tvWarningPasswordMath,imgMath,read);
                     }
                 }else {
 //                    imgCheckPassword.setImageResource(R.drawable.img_error);

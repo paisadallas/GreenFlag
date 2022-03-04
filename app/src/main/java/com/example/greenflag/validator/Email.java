@@ -29,16 +29,34 @@ public class Email {
     public boolean check=false;
     public boolean exist = false;
 
-    //end
     String regex = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,6})+$";
-
+/*
     public boolean testEmail(String email){
 
         String regexEmail = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,6})+$";
        return Pattern.compile(regexEmail).matcher(email).matches();
     }
-
+*/
         public void checkEmail(EditText editText, ImageView imgCheckEmail, TextView warning, Read read) {
+
+        //UPDATE ROTATION
+
+                String email = editText.getText().toString();
+
+                if(Pattern.compile(regex).matcher(email).matches()){
+                    imgCheckEmail.setImageResource(R.drawable.img_ok);
+                    check=true;
+                    read.enableEmail(true);
+                }
+                else {
+                    imgCheckEmail.setImageResource(R.drawable.img_error);
+                    warning.setText("Invalid email");
+                    warning.setTextColor(Color.parseColor("#FF0000"));
+                    read.enableEmail(false);
+                    check=false;
+                }
+
+
 
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -79,6 +97,24 @@ public class Email {
 
     public void checkEmailExist(EditText etEmail, SharedPreferences sharedPreferences, TextView tvWarningEmail,Read read) {
 
+        //UPDATE ROTATE
+        String email = etEmail.getText().toString();
+
+        if(Pattern.compile(regex).matcher(email).matches() && check){
+            //CHECKING EXITING PASSWORD
+            if(load.email(sharedPreferences,etEmail.getText().toString())){
+                tvWarningEmail.setText("Email exist");
+                tvWarningEmail.setTextColor(Color.parseColor("#086E00"));
+                exist = true;
+                read.enableWrite(false);
+            }else {
+                tvWarningEmail.setText("New User");
+                tvWarningEmail.setTextColor(Color.parseColor("#086E00"));
+                read.enableWrite(true);
+            }
+        }
+
+        //UPDATE EDIT TEXT
         etEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -147,14 +183,11 @@ public class Email {
         });
     }
 
-
+    //CLEAN EDIT TEXT
     public void cleanData(EditText etEmail, EditText etPassword, EditText etMathPassword) {
         etEmail.setText("");
         etPassword.setText("");
         etMathPassword.setText("");
     }
 
-    public void update (){
-
-    }
 }

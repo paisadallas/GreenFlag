@@ -110,8 +110,8 @@ public class MainActivity2 extends AppCompatActivity {
         email.checkEmailExist(etEmail,sharedPreferences,tvWarningEmail,read);
         email.cleanPasswords(etEmail,etPassword,etMathPassword);
         //PASSWORD CLASS
-        password.checkPassword(etPassword,tvWarningPassword,imgCheckPassword,email,read);
-        password.checkPasswordSave(etPassword,tvWarningPassword,imgCheckPassword,email,read);
+        password.checkPassword(etPassword,etMathPassword,mathPassword,tvWarningPassword,tvWarningPasswordMath,imgCheckPassword,imgCheckMath,email,read);
+        password.checkPasswordSave(etPassword,etMathPassword,tvWarningPassword,tvWarningPasswordMath,imgCheckPassword,imgCheckMath,email,read,mathPassword);
         //MATH CLASS
         mathPassword.mathPassword(etPassword,etMathPassword,tvWarningPasswordMath, imgCheckMath,read);
 
