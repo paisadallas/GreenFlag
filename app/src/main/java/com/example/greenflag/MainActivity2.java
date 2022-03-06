@@ -79,8 +79,10 @@ public class MainActivity2 extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(),MainActivity.class);
-                startActivity(intent);
+                // here you just need to call the on back pressed callback since it will pop the last activity in backstack
+                onBackPressed();
+//                Intent intent = new Intent(getBaseContext(),MainActivity.class);
+//                startActivity(intent);
             }
         });
 
